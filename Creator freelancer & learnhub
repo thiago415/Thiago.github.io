@@ -1,0 +1,76 @@
+from flask import Flask, jsonify, request
+
+app = Flask(__name__)
+
+# Rota para encontrar freelancers especializados
+@app.route('/freelancers', methods=['GET'])
+def get_freelancers():
+    # Lógica para buscar freelancers no banco de dados ou em uma API externa
+    freelancers = [
+        {
+            'nome': 'João',
+            'especialidade': 'Edição de Vídeo',
+            'portfolio': 'www.portfolio.com/joao',
+            'avaliacoes': 5
+        },
+        {
+            'nome': 'Maria',
+            'especialidade': 'Design Gráfico',
+            'portfolio': 'www.portfolio.com/maria',
+            'avaliacoes': 4.8
+        },
+        {
+            'nome': 'Pedro',
+            'especialidade': 'Redação de Conteúdo',
+            'portfolio': 'www.portfolio.com/pedro',
+            'avaliacoes': 4.5
+        }
+    ]
+    return jsonify(freelancers)
+
+# Rota para fazer solicitações de projetos
+@app.route('/solicitacoes', methods=['POST'])
+def post_solicitacoes():
+    dados_solicitacao = request.json
+    # Lógica para processar a solicitação e enviar para freelancers interessados
+    return jsonify({'mensagem': 'Solicitação enviada com sucesso!'})
+
+# Rota para acessar cursos especializados
+@app.route('/cursos', methods=['GET'])
+def get_cursos():
+    # Lógica para buscar cursos no banco de dados ou em uma API externa
+    cursos = [
+        {
+            'titulo': 'Edição de Vídeo Avançada',
+            'descricao': 'Aprenda técnicas avançadas de edição de vídeo.',
+            'instrutor': 'João',
+            'duracao': '4 semanas'
+        },
+        {
+            'titulo': 'Design Gráfico para Iniciantes',
+            'descricao': 'Introdução ao design gráfico com ferramentas populares.',
+            'instrutor': 'Maria',
+            'duracao': '6 semanas'
+        },
+        {
+            'titulo': 'Redação Persuasiva',
+            'descricao': 'Aprenda a escrever conteúdo persuasivo e envolvente.',
+            'instrutor': 'Pedro',
+            'duracao': '3 semanas'
+        }
+    ]
+    return jsonify(cursos)
+
+# Rota para acessar a comunidade de aprendizado
+@app.route('/comunidade', methods=['GET'])
+def get_comunidade():
+    # Lógica para buscar informações da comunidade no banco de dados ou em uma API externa
+    comunidade = {
+        'numero_estudantes': 1000,
+        'numero_instrutores': 50,
+        'numero_posts': 500
+    }
+    return jsonify(comunidade)
+
+if __name__ == '__main__':
+    app.run(debug=True)
